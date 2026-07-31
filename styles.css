@@ -1,0 +1,115 @@
+#bulkGPTOverlay {
+  position: fixed;
+  top: 120px;
+  left: 20px;
+  width: 260px;
+  background: #1a1a1a;
+  border: 2px solid #ffa500;
+  padding: 0;
+  z-index: 2147483647;
+  color: white;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Header (draggable) */
+#bulkGPTHeader {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: move;
+  background: linear-gradient(90deg, #ffa500, #ffd700);
+  border-radius: 6px 6px 0 0;
+}
+
+#bulkGPTHeader h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+  flex: 1;
+}
+
+/* Trashcan icon */
+#bulkGPTIcon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+#bulkGPTIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Body */
+#bulkGPTBody {
+  padding: 8px;
+}
+
+#instructions {
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+#selectedList {
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.selected-item {
+  padding: 4px 0;
+  border-bottom: 1px solid #333;
+  font-size: 13px;
+}
+
+/* Neon blue highlight */
+.selected-item,
+.sidebar-selected {
+  background: rgba(0, 150, 255, 0.25);
+  border-left: 3px solid #00aaff;
+  box-shadow: 0 0 8px #00aaff;
+}
+
+/* Buttons */
+#deleteBtn,
+#archiveBtn {
+  width: 100%;
+  padding: 6px;
+  margin-top: 6px;
+  background: #ffa500;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+#archiveBtn {
+  background: #ffd700;
+}
+
+#deleteBtn:hover,
+#archiveBtn:hover {
+  background: #ffcc33;
+}
+
+/* Minimized mode */
+#bulkGPTOverlay.minimized {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+#bulkGPTOverlay.minimized #bulkGPTHeader {
+  border-radius: 8px;
+  padding: 8px;
+}
+
+#bulkGPTOverlay.minimized #bulkGPTHeader h3,
+#bulkGPTOverlay.minimized #bulkGPTBody {
+  display: none;
+}
