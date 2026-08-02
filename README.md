@@ -1,81 +1,73 @@
 BulkGPT
 =======
 
-BulkGPT is a Chrome extension that adds a draggable overlay to ChatGPT, which allows users to bulk delete or bulk archive conversations. The extension uses a Ctrl+Click selection system that will work reliably across all ChatGPT domains, including chatgpt.com and chat.openai.com.
+BulkGPT is a Chrome extension that puts a movable overlay on ChatGPT. This lets you delete or archive multiple conversations at once. It uses a Ctrl+Click method to select chats, which works on all ChatGPT sites like chatgpt.com and chat.openai.com.
 
-Features
---------
-- Ctrl+Click allows selection of multiple chats
-- Automatic range selection (click → Ctrl+Click)
-- Selected chats display inside the BulkGPT overlay
-- Bulk delete selected chats
-- Bulk archive selected chats
-- Draggable overlay panel
-- Lightweight, dependency‑free implementation
-
-How It Works
+What it does
 ------------
-BulkGPT listens for clicks on ChatGPT’s sidebar items. When you click a chat, it is added to the selection list. When you Ctrl+Click another chat, BulkGPT selects everything between the two clicks.
+- You can select many chats by holding Ctrl and clicking them.
+- It can select a whole range of chats if you click one and then Ctrl+Click another.
+- The chats you select show up in the BulkGPT overlay.
+- You can delete all the selected chats.
+- You can also archive all the selected chats.
+- The overlay panel can be moved around.
+- It's built to be simple and doesn't need other software.
 
-Selected chats appear inside the overlay, where you can delete or archive them in bulk.
+How it works
+------------
+BulkGPT watches for clicks on the chat list in ChatGPT's sidebar. When you click a chat, it gets added to a list. If you then Ctrl+Click another chat, BulkGPT selects all the chats between those two clicks.
 
-Selection Behavior
+The selected chats show up in the overlay. From there, you can delete or archive them all together.
+
+How to select chats
 ------------------
-- **Click** a chat → adds it to the selection list  
-- **Shift+Click** another chat → selects all chats in between  
-- Selected chats are shown inside the overlay  
-- Delete or archive actions apply to all selected chats  
+- Click a chat to add it to the selection.
+- Hold Shift and click another chat to select all the chats in between.
+- Selected chats appear in the overlay.
+- When you delete or archive, it applies to all the chats you've selected.
 
-Installation
+How to install
 ------------
-1. Download or clone the BulkGPT folder containing:
+1. Get the BulkGPT folder. It should have these files:
    - manifest.json
    - content.js
    - styles.css
 
-2. Open Chrome and navigate to:
+2. Go to this address in Chrome:
    chrome://extensions
 
-3. Enable Developer Mode.
+3. Turn on Developer mode.
 
-4. Click “Load unpacked”.
+4. Click Load unpacked.
 
-5. Select the BulkGPT folder.
+5. Choose the BulkGPT folder.
 
-6. Open ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay will appear automatically.
+6. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
 
-Usage
+How to use it
 -----
-Move the overlay:
-Drag the header bar labeled “BulkGPT” to reposition the panel anywhere on the screen.
+Moving the overlay:
+You can drag the header bar that says BulkGPT to put the panel wherever you want on the screen.
 
-Select chats:
-Click any chat in the sidebar to select it. Shift+Click another chat to select a range.
+Selecting chats:
+Click a chat in the sidebar to select it. Hold Shift and click another chat to select a group.
 
-Delete selected chats:
-Click the “Delete Selected” button.
+Deleting selected chats:
+Click the Delete Selected button.
 
-Archive selected chats:
-Click the “Archive Selected” button.
+Archiving selected chats:
+Click the Archive Selected button.
 
-Project Structure
+Project files
 -----------------
 bulkGPT/
-  manifest.json     (Chrome extension manifest)
-  content.js        (Injected script: UI, logic, selection system, API calls)
-  styles.css        (Overlay styling)
+  manifest.json     (Chrome extension info)
+  content.js        (The main script: shows the interface, handles logic, selection, and communication with ChatGPT)
+  styles.css        (How the overlay looks)
 
-Compatibility
+Works with
 -------------
 BulkGPT works on:
 - https://chatgpt.com
 - https://chat.openai.com
-- All conversation pages under /c/
-
-Contributing
-------------
-Contributions, issues, and feature requests are welcome. Feel free to open a pull request or submit an issue.
-
-License
--------
-BulkGPT is released under an open-source license. You may use, modify, and distribute it freely.
+- All conversation pages that start with /c/
