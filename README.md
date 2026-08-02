@@ -5,9 +5,9 @@ BulkGPT is a Chrome extension that adds a draggable overlay to ChatGPT, which al
 
 Features
 --------
-- Ctrl+Click selection of multiple chats
+- Ctrl+Click allows selection of multiple chats
 - Automatic range selection (click → Ctrl+Click)
-- Selected chats displayed inside the BulkGPT overlay
+- Selected chats display inside the BulkGPT overlay
 - Bulk delete selected chats
 - Bulk archive selected chats
 - Draggable overlay panel
