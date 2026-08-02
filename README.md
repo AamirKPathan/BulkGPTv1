@@ -1,7 +1,7 @@
 BulkGPT
 =======
 
-BulkGPT is an open‑source Chrome extension that adds a draggable overlay to ChatGPT, allowing users to bulk delete or bulk archive conversations. The extension now uses a Ctrl+Click selection system that works reliably across all ChatGPT domains, including chatgpt.com and chat.openai.com.
+BulkGPT is a Chrome extension that adds a draggable overlay to ChatGPT,which allowing users to bulk delete or bulk archive conversations. The extension now uses a Ctrl+Click selection system that works reliably across all ChatGPT domains, including chatgpt.com and chat.openai.com.
 
 Features
 --------
