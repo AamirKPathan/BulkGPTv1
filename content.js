@@ -33,7 +33,7 @@
 
       <div id="bulkGPTBody">
         <div id="instructions">
-          Hold <b>CTRL</b> and click chats to select multiple.
+          Click chats to select them. Hold <b>SHIFT</b> and click to select a range.
         </div>
 
         <div id="selectedList"></div>

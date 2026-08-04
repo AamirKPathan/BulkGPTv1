@@ -1,12 +1,12 @@
 BulkGPT
 =======
 
-BulkGPT is a Chrome extension that puts a movable overlay on ChatGPT. This lets you delete or archive multiple conversations at once. It uses a Ctrl+Click method to select chats, which works on all ChatGPT sites like chatgpt.com and chat.openai.com.
+BulkGPT is a Chrome extension that puts a movable overlay on ChatGPT. This lets you delete or archive multiple conversations at once. It uses click and Shift+Click selection, which works on ChatGPT sites like chatgpt.com and chat.openai.com.
 
 What it does
 ------------
-- You can select many chats by holding Ctrl and clicking them.
-- It can select a whole range of chats if you click one and then Ctrl+Click another.
+- You can select chats by clicking them.
+- It can select a whole range of chats if you click one and then Shift+Click another.
 - The chats you select show up in the BulkGPT overlay.
 - You can delete all the selected chats.
 - You can also archive all the selected chats.
@@ -15,7 +15,7 @@ What it does
 
 How it works
 ------------
-BulkGPT watches for clicks on the chat list in ChatGPT's sidebar. When you click a chat, it gets added to a list. If you then Ctrl+Click another chat, BulkGPT selects all the chats between those two clicks.
+BulkGPT watches for clicks on the chat list in ChatGPT's sidebar. When you click a chat, it gets added to a list. If you then Shift+Click another chat, BulkGPT selects all the chats between those two clicks.
 
 The selected chats show up in the overlay. From there, you can delete or archive them all together.
 
@@ -28,21 +28,46 @@ How to select chats
 
 How to install
 ------------
-1. Get the BulkGPT folder. It should have these files:
-   - manifest.json
-   - content.js
-   - styles.css
+You can install BulkGPT either from the packaged `.crx` file or by downloading the source from GitHub and loading it as an unpacked extension.
+
+Option 1: Install the `.crx`
+1. Download `BulkGPT.crx` from the BulkGPT demo page:
+   https://aamirkpathan.github.io/bulkgpt-demo/downloads/BulkGPT.crx
 
 2. Go to this address in Chrome:
    chrome://extensions
 
 3. Turn on Developer mode.
 
-4. Click Load unpacked.
+4. Drag `BulkGPT.crx` onto the Chrome extensions page and confirm the install.
 
-5. Choose the BulkGPT folder.
+5. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
 
-6. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
+If Chrome blocks the `.crx` because it was downloaded outside the Chrome Web Store, use the GitHub source install method below.
+
+Option 2: Install from the GitHub repo
+1. Download the source from GitHub:
+   https://github.com/AamirKPathan/BulkGPTv1
+
+2. Click Code, then Download ZIP.
+
+3. Extract the ZIP file.
+
+4. Open the extracted BulkGPT folder. It should have these files:
+   - manifest.json
+   - content.js
+   - styles.css
+
+5. Go to this address in Chrome:
+   chrome://extensions
+
+6. Turn on Developer mode.
+
+7. Click Load unpacked.
+
+8. Choose the extracted BulkGPT folder.
+
+9. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
 
 How to use it
 -----
