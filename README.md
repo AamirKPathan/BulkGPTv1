@@ -28,24 +28,33 @@ How to select chats
 
 How to install
 ------------
-You can install BulkGPT either from the packaged `.crx` file or by downloading the source from GitHub and loading it as an unpacked extension.
+Install BulkGPT by downloading the ZIP package or by downloading the source from GitHub, then loading it as an unpacked extension.
 
-Option 1: Install the `.crx`
-1. Download `BulkGPT.crx` from the BulkGPT demo page:
-   https://aamirkpathan.github.io/bulkgpt-demo/downloads/BulkGPT.crx
+Chrome may reject self-hosted `.crx` files with `CRX_REQUIRED_PROOF_MISSING`. For personal use, use one of the unpacked install methods below.
 
-2. Go to this address in Chrome:
+Option 1: Download the ZIP package
+1. Download `BulkGPT.zip` from the BulkGPT demo page:
+   https://aamirkpathan.github.io/bulkgpt-demo/downloads/BulkGPT.zip
+
+2. Extract the ZIP file.
+
+3. Open the extracted BulkGPT folder. It should have these files:
+   - manifest.json
+   - content.js
+   - styles.css
+
+4. Go to this address in Chrome:
    chrome://extensions
 
-3. Turn on Developer mode.
+5. Turn on Developer mode.
 
-4. Drag `BulkGPT.crx` onto the Chrome extensions page and confirm the install.
+6. Click Load unpacked.
 
-5. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
+7. Choose the extracted BulkGPT folder.
 
-If Chrome blocks the `.crx` because it was downloaded outside the Chrome Web Store, use the GitHub source install method below.
+8. Go to ChatGPT (chatgpt.com or chat.openai.com). The BulkGPT overlay should appear.
 
-Option 2: Install from the GitHub repo
+Option 2: Download from the GitHub repo
 1. Download the source from GitHub:
    https://github.com/AamirKPathan/BulkGPTv1
 
