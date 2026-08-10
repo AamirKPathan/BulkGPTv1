@@ -33,8 +33,8 @@ Install BulkGPT by downloading the `.crx` package or by downloading the source f
 Note: Chrome may reject self-hosted `.crx` files with `CRX_REQUIRED_PROOF_MISSING` on some systems unless the extension is distributed through a Chrome-approved channel. The `.crx` download is still provided below.
 
 Option 1: Install the `.crx`
-1. Download `BulkGPT.crx` from the BulkGPT demo page:
-   https://aamirkpathan.github.io/bulkgpt-demo/downloads/BulkGPT.crx
+1. Download `BulkGPT.crx` from the GitHub release:
+   https://github.com/AamirKPathan/BulkGPTv1/releases/download/v2.1/BulkGPT.crx
 
 2. Go to this address in Chrome:
    chrome://extensions
