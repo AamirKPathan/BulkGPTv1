@@ -37,6 +37,7 @@
         </div>
 
         <div id="selectedList"></div>
+        <div id="bulkGPTStatus" role="status">Ready.</div>
 
         <button id="deleteBtn">Delete Selected</button>
         <button id="archiveBtn">Archive Selected</button>
@@ -144,6 +145,7 @@
     const failedChats = [];
 
     for (const chat of selectedChats) {
+      setStatus(`Deleting: ${chat.title}`);
       const ok = await updateChat(chat.id, { is_visible: false });
       if (ok) {
         successCount++;
@@ -153,6 +155,7 @@
     }
 
     alert(`Delete complete. Success: ${successCount}, Failed: ${failedChats.length}.`);
+    setStatus(`Delete finished: ${successCount} succeeded, ${failedChats.length} failed.`);
     selectedChats = failedChats;
     updateOverlay();
     updateSidebarHighlights();
@@ -168,6 +171,7 @@
     const failedChats = [];
 
     for (const chat of selectedChats) {
+      setStatus(`Archiving: ${chat.title}`);
       const ok = await updateChat(chat.id, { is_archived: true });
       if (ok) {
         successCount++;
@@ -177,6 +181,7 @@
     }
 
     alert(`Archive complete. Success: ${successCount}, Failed: ${failedChats.length}.`);
+    setStatus(`Archive finished: ${successCount} succeeded, ${failedChats.length} failed.`);
     selectedChats = failedChats;
     updateOverlay();
     updateSidebarHighlights();
@@ -201,10 +206,13 @@
         });
 
         if (response.ok) {
+          setStatus(`Updated ${id} using ${endpoint}.`);
           return true;
         }
 
         const responseText = await response.text();
+        const detail = responseText.replace(/\s+/g, " ").trim().slice(0, 160);
+        setStatus(`Failed ${id}: HTTP ${response.status}${detail ? ` - ${detail}` : ""}`);
         console.error("Failed to update chat:", {
           id,
           endpoint,
@@ -217,12 +225,18 @@
           return false;
         }
       } catch (e) {
+        setStatus(`Request failed for ${id}: ${e.message}`);
         console.error("Failed to update chat:", id, endpoint, e);
         return false;
       }
     }
 
     return false;
+  }
+
+  function setStatus(message) {
+    const status = document.getElementById("bulkGPTStatus");
+    if (status) status.textContent = message;
   }
 
   function setupDrag(overlay) {
