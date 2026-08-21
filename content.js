@@ -135,34 +135,71 @@
   }
 
   async function deleteSelected() {
-    for (const chat of selectedChats) {
-      await updateChat(chat.id, { is_visible: false });
+    if (!selectedChats.length) {
+      alert("No chats selected.");
+      return;
     }
-    alert("Deleted selected chats.");
-    selectedChats = [];
+
+    let successCount = 0;
+    const failedChats = [];
+
+    for (const chat of selectedChats) {
+      const ok = await updateChat(chat.id, { is_visible: false });
+      if (ok) {
+        successCount++;
+      } else {
+        failedChats.push(chat);
+      }
+    }
+
+    alert(`Delete complete. Success: ${successCount}, Failed: ${failedChats.length}.`);
+    selectedChats = failedChats;
     updateOverlay();
     updateSidebarHighlights();
   }
 
   async function archiveSelected() {
-    for (const chat of selectedChats) {
-      await updateChat(chat.id, { is_archived: true });
+    if (!selectedChats.length) {
+      alert("No chats selected.");
+      return;
     }
-    alert("Archived selected chats.");
-    selectedChats = [];
+
+    let successCount = 0;
+    const failedChats = [];
+
+    for (const chat of selectedChats) {
+      const ok = await updateChat(chat.id, { is_archived: true });
+      if (ok) {
+        successCount++;
+      } else {
+        failedChats.push(chat);
+      }
+    }
+
+    alert(`Archive complete. Success: ${successCount}, Failed: ${failedChats.length}.`);
+    selectedChats = failedChats;
     updateOverlay();
     updateSidebarHighlights();
   }
 
   async function updateChat(id, payload) {
     try {
-      await fetch(`https://chat.openai.com/backend-api/conversations/${id}`, {
+      const response = await fetch(`/backend-api/conversation/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(payload)
       });
+
+      if (!response.ok) {
+        console.error("Failed to update chat:", id, response.status, response.statusText);
+        return false;
+      }
+
+      return true;
     } catch (e) {
       console.error("Failed to update chat:", id, e);
+      return false;
     }
   }
 
