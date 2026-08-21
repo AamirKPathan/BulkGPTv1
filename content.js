@@ -184,7 +184,7 @@
 
   async function updateChat(id, payload) {
     try {
-      const response = await fetch(`/backend-api/conversation/${id}`, {
+      const response = await fetch(`/backend-api/conversations/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
