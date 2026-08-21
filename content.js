@@ -183,24 +183,46 @@
   }
 
   async function updateChat(id, payload) {
-    try {
-      const response = await fetch(`/backend-api/conversations/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(payload)
-      });
+    const endpoints = [
+      `/backend-api/conversations/${id}`,
+      `/backend-api/conversation/${id}`
+    ];
 
-      if (!response.ok) {
-        console.error("Failed to update chat:", id, response.status, response.statusText);
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(endpoint, {
+          method: "PATCH",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          return true;
+        }
+
+        const responseText = await response.text();
+        console.error("Failed to update chat:", {
+          id,
+          endpoint,
+          status: response.status,
+          statusText: response.statusText,
+          response: responseText.slice(0, 500)
+        });
+
+        if (response.status !== 404) {
+          return false;
+        }
+      } catch (e) {
+        console.error("Failed to update chat:", id, endpoint, e);
         return false;
       }
-
-      return true;
-    } catch (e) {
-      console.error("Failed to update chat:", id, e);
-      return false;
     }
+
+    return false;
   }
 
   function setupDrag(overlay) {
