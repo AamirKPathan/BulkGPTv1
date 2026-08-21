@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "BulkGPT",
+  "version": "2.1",
+  "description": "Bulk delete and archive ChatGPT conversations using shift-click selection.",
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
