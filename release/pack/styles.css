@@ -3,30 +3,33 @@
   top: 120px;
   left: 20px;
   width: 260px;
-  background: #1a1a1a;
-  border: 2px solid #ffa500;
+  background: #202124;
+  border: 1px solid #4a4b50;
   padding: 0;
   z-index: 2147483647;
-  color: white;
-  font-family: Arial, sans-serif;
+  color: #f1f1f1;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
-/* Header (draggable) */
+/* Header */
 #bulkGPTHeader {
   display: flex;
   align-items: center;
-  padding: 6px 8px;
+  padding: 8px 10px;
   cursor: move;
-  background: linear-gradient(90deg, #ffa500, #ffd700);
+  background: #2a2b2f;
+  border-bottom: 1px solid #48494e;
   border-radius: 6px 6px 0 0;
 }
 
 #bulkGPTHeader h3 {
   margin: 0;
-  font-size: 14px;
-  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #f4b860;
   flex: 1;
 }
 
@@ -44,13 +47,14 @@
 
 /* Body */
 #bulkGPTBody {
-  padding: 8px;
+  padding: 10px;
 }
 
 #instructions {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   font-size: 12px;
-  color: #ccc;
+  color: #b8bac0;
+  line-height: 1.45;
 }
 
 #selectedList {
@@ -60,25 +64,27 @@
 }
 
 #bulkGPTStatus {
-  margin: 6px 0;
-  color: #9fd8ff;
+  margin: 8px 0;
+  color: #aeb7c4;
   font-size: 11px;
   line-height: 1.35;
   overflow-wrap: anywhere;
 }
 
 .selected-item {
-  padding: 4px 0;
-  border-bottom: 1px solid #333;
+  padding: 6px 8px;
+  border-bottom: 1px solid #37383d;
   font-size: 13px;
 }
 
-/* Neon blue highlight */
-.selected-item,
+.selected-item {
+  background: #292b30;
+  border-left: 3px solid #d99a4a;
+}
+
 .sidebar-selected {
-  background: rgba(0, 150, 255, 0.25);
-  border-left: 3px solid #00aaff;
-  box-shadow: 0 0 8px #00aaff;
+  background: rgba(217, 154, 74, 0.12);
+  border-left: 3px solid #d99a4a;
 }
 
 /* Buttons */
@@ -97,15 +103,15 @@
 }
 
 #archiveBtn {
-  background: #ffd700;
+  background: #d99a4a;
 }
 
 #deleteBtn:hover,
 #archiveBtn:hover {
-  background: #ffcc33;
+  background: #e7ad60;
 }
 
-/* Minimized mode */
+/* Minimized mode (The Trashcan) */
 #bulkGPTOverlay.minimized {
   width: 40px;
   height: 40px;
