@@ -146,7 +146,7 @@
 
     for (const chat of selectedChats) {
       setStatus(`Deleting: ${chat.title}`);
-      const ok = await updateChat(chat.id, { is_visible: false });
+      const ok = await updateChat(chat.id, "delete");
       if (ok) {
         successCount++;
       } else {
@@ -172,7 +172,7 @@
 
     for (const chat of selectedChats) {
       setStatus(`Archiving: ${chat.title}`);
-      const ok = await updateChat(chat.id, { is_archived: true });
+      const ok = await updateChat(chat.id, "archive");
       if (ok) {
         successCount++;
       } else {
@@ -187,35 +187,33 @@
     updateSidebarHighlights();
   }
 
-  async function updateChat(id, payload) {
-    const endpoints = [
-      `/backend-api/conversations/${id}`,
-      `/backend-api/conversation/${id}`
-    ];
+  async function updateChat(id, action) {
+    const requests = action === "delete"
+      ? [{ method: "DELETE", endpoint: `/backend-api/conversations/${id}` }]
+      : [{ method: "POST", endpoint: `/backend-api/conversations/${id}/archive` }];
 
-    for (const endpoint of endpoints) {
+    for (const request of requests) {
       try {
-        const response = await fetch(endpoint, {
-          method: "PATCH",
+        const response = await fetch(request.endpoint, {
+          method: request.method,
           headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Accept": "application/json"
           },
-          credentials: "include",
-          body: JSON.stringify(payload)
+          credentials: "include"
         });
 
         if (response.ok) {
-          setStatus(`Updated ${id} using ${endpoint}.`);
+          setStatus(`Updated ${id} using ${request.method} ${request.endpoint}.`);
           return true;
         }
 
         const responseText = await response.text();
         const detail = responseText.replace(/\s+/g, " ").trim().slice(0, 160);
-        setStatus(`Failed ${id}: HTTP ${response.status}${detail ? ` - ${detail}` : ""}`);
+        setStatus(`Failed ${id}: ${request.method} ${request.endpoint} -> HTTP ${response.status}${detail ? ` - ${detail}` : ""}`);
         console.error("Failed to update chat:", {
           id,
-          endpoint,
+          method: request.method,
+          endpoint: request.endpoint,
           status: response.status,
           statusText: response.statusText,
           response: responseText.slice(0, 500)
@@ -226,7 +224,7 @@
         }
       } catch (e) {
         setStatus(`Request failed for ${id}: ${e.message}`);
-        console.error("Failed to update chat:", id, endpoint, e);
+        console.error("Failed to update chat:", id, request.endpoint, e);
         return false;
       }
     }
