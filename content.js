@@ -210,14 +210,12 @@
         const responseText = await response.text();
         const detail = responseText.replace(/\s+/g, " ").trim().slice(0, 160);
         setStatus(`Failed ${id}: ${request.method} ${request.endpoint} -> HTTP ${response.status}${detail ? ` - ${detail}` : ""}`);
-        console.error("Failed to update chat:", {
-          id,
-          method: request.method,
-          endpoint: request.endpoint,
-          status: response.status,
-          statusText: response.statusText,
-          response: responseText.slice(0, 500)
-        });
+        console.error(
+          `Failed to update chat: id=${id} method=${request.method} ` +
+          `endpoint=${request.endpoint} status=${response.status} ` +
+          `statusText=${response.statusText || "(empty)"} ` +
+          `response=${responseText.slice(0, 500)}`
+        );
 
         if (response.status !== 404) {
           return false;
