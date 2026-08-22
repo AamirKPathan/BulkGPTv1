@@ -14,3 +14,14 @@ BulkGPT is a chrome extension that improves qol on ChatGPT.
 ## How It works
 
 BulkGPT listens for clicks on ChatGPT's sidebar.
+
+## Selecting Chats
+
+- Click a chat to select it
+- Shift + Click another chat t o select everything in between
+- Selected Chats appear in the overlay
+- Delete or archive applies to all selected chats.
+
+## Installation
+
+You can install BulkGPT using either the `.zip` or `.crx`
