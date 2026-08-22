@@ -9,4 +9,8 @@ BulkGPT is a chrome extension that improves qol on ChatGPT.
 - Selected Chats appear in a floating overlay
 - Delete or archive all selected cahts at once.
 - Drag the overlay anywhere on your screen
--
+- No extra software is required.
+
+## How It works
+
+Bulk 
