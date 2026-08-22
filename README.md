@@ -31,3 +31,4 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
 
 ### Option 1: Install using the ZIP file
 
+1. Download `BulkGPT.zip` from the rel
