@@ -188,46 +188,81 @@
   }
 
   async function updateChat(id, action) {
-    const requests = action === "delete"
-      ? [{ method: "DELETE", endpoint: `/backend-api/conversations/${id}` }]
-      : [{ method: "POST", endpoint: `/backend-api/conversations/${id}/archive` }];
-
-    for (const request of requests) {
-      try {
-        const response = await fetch(request.endpoint, {
-          method: request.method,
-          headers: {
-            "Accept": "application/json"
-          },
-          credentials: "include"
-        });
-
-        if (response.ok) {
-          setStatus(`Updated ${id} using ${request.method} ${request.endpoint}.`);
-          return true;
-        }
-
-        const responseText = await response.text();
-        const detail = responseText.replace(/\s+/g, " ").trim().slice(0, 160);
-        setStatus(`Failed ${id}: ${request.method} ${request.endpoint} -> HTTP ${response.status}${detail ? ` - ${detail}` : ""}`);
-        console.error(
-          `Failed to update chat: id=${id} method=${request.method} ` +
-          `endpoint=${request.endpoint} status=${response.status} ` +
-          `statusText=${response.statusText || "(empty)"} ` +
-          `response=${responseText.slice(0, 500)}`
-        );
-
-        if (response.status !== 404) {
-          return false;
-        }
-      } catch (e) {
-        setStatus(`Request failed for ${id}: ${e.message}`);
-        console.error("Failed to update chat:", id, request.endpoint, e);
-        return false;
-      }
+    const chat = findChatById(id);
+    if (!chat) {
+      setStatus(`Could not find chat ${id} in the sidebar.`);
+      return false;
     }
 
-    return false;
+    const menuButton = findOptionsButton(chat);
+    if (!menuButton) {
+      setStatus(`Could not find options menu for chat ${id}.`);
+      return false;
+    }
+
+    menuButton.click();
+    const menuItem = await waitForElement(() => findMenuItem(action));
+    if (!menuItem) {
+      setStatus(`Could not find ${action} action for chat ${id}.`);
+      return false;
+    }
+
+    menuItem.click();
+
+    if (action === "delete") {
+      const confirmButton = await waitForElement(() => findDeleteConfirmation());
+      if (!confirmButton) {
+        setStatus(`Delete confirmation did not appear for chat ${id}.`);
+        return false;
+      }
+      confirmButton.click();
+    }
+
+    setStatus(`${action === "delete" ? "Deleted" : "Archived"} ${id} using ChatGPT's native action.`);
+    await wait(300);
+    return true;
+  }
+
+  function findChatById(id) {
+    return [...document.querySelectorAll('#history a[data-sidebar-item="true"]')]
+      .find(chat => chat.getAttribute("href")?.includes(`/c/${id}`));
+  }
+
+  function findOptionsButton(chat) {
+    let container = chat;
+    for (let level = 0; level < 4 && container; level++, container = container.parentElement) {
+      const button = [...container.querySelectorAll("button")].find(candidate => {
+        const label = `${candidate.getAttribute("aria-label") || ""} ${candidate.getAttribute("title") || ""}`;
+        return /more|option|menu/i.test(label);
+      });
+      if (button) return button;
+    }
+    return null;
+  }
+
+  function findMenuItem(action) {
+    const name = action === "delete" ? "delete" : "archive";
+    return [...document.querySelectorAll('[role="menu"] button, [role="menuitem"], button')]
+      .find(item => item.textContent.trim().toLowerCase() === name);
+  }
+
+  function findDeleteConfirmation() {
+    return [...document.querySelectorAll('[role="dialog"] button, button')]
+      .find(button => button.textContent.trim().toLowerCase() === "delete");
+  }
+
+  async function waitForElement(getElement, timeout = 2000) {
+    const start = Date.now();
+    while (Date.now() - start < timeout) {
+      const element = getElement();
+      if (element) return element;
+      await wait(100);
+    }
+    return null;
+  }
+
+  function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
 
   function setStatus(message) {
