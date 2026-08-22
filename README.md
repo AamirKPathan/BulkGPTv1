@@ -13,4 +13,4 @@ BulkGPT is a chrome extension that improves qol on ChatGPT.
 
 ## How It works
 
-Bulk 
+BulkGPT listens for clicks on ChatGPT's sidebar.
