@@ -33,4 +33,6 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
 
 1. Download `BulkGPT.zip` from the release page
 2. Extract the ZIP.
-3. Open the extracted
+3. Open the extracted folder
+    - manifest.json
+    - content.js
