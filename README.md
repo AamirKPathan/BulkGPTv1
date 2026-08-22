@@ -50,7 +50,7 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
    `chrome://extensions`
 3. Enable **Developer mode**.
 4. Drag and drop the `BulkGPT.crx` file into the extensions page.
-5. Open ChatGPT — the overlay should appear.
+5. Open ChatGPT and the overlay should appear.
 
 **If Chrome says the manifest file is missing:**  
 You selected the wrong folder. Choose the folder that directly contains `manifest.json`.
