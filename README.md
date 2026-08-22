@@ -42,3 +42,13 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
 6. Click Load Unpacked.
 7. Select The `BulkGPT` folder.
 8. Open ChatGPT
+
+### Option 2: Install using the CRX file
+
+1. Download `BulkGPT.crx` from the release page.
+2. Open Chrome and go to:
+   `chrome://extensions`
+3. Enable **Developer mode**.
+4. Drag and drop the `BulkGPT.crx` file into the extensions page.
+5. Open ChatGPT — the overlay should appear.
+
