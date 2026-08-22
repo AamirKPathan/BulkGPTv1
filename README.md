@@ -52,3 +52,26 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
 4. Drag and drop the `BulkGPT.crx` file into the extensions page.
 5. Open ChatGPT — the overlay should appear.
 
+**If Chrome says the manifest file is missing:**  
+You selected the wrong folder. Choose the folder that directly contains `manifest.json`.
+
+## Using BulkGPT
+
+### Moving the overlay
+Drag the header bar (the one labeled “BulkGPT”) to move the panel anywhere on your screen.
+
+### Selecting chats
+Click to select one chat. Shift+Click another to select a full block.
+
+### Deleting selected chats
+Click **Delete Selected**.
+
+### Archiving selected chats
+Click **Archive Selected**.
+
+## Supported Sites
+
+BulkGPT works on:
+- https://chatgpt.com
+- https://chat.openai.com
+- Any conversation page starting with `/c/`
