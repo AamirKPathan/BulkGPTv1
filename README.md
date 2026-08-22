@@ -25,3 +25,5 @@ BulkGPT listens for clicks on ChatGPT's sidebar.
 ## Installation
 
 You can install BulkGPT using either the `.zip` or `.crx`
+
+Download (ZIP or CRX)
