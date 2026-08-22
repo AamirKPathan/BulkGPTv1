@@ -37,4 +37,5 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
     - manifest.json
     - content.js
     - styles.css
-4. Open Chrome and go to `chrome
+4. Open Chrome and go to `chrome://extensions`
+5. Enable ##
