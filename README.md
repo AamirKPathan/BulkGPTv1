@@ -39,4 +39,5 @@ https://github.com/AamirKPathan/BulkGPTv1/releases/tag/v2.1
     - styles.css
 4. Open Chrome and go to `chrome://extensions`
 5. Enable Developer Mode
-6. Click Load 
+6. Click Load Unpacked.
+7. Select The `BulkGPT` folder
